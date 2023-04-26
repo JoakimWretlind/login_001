@@ -24,5 +24,3 @@ const emailExists = check("email").custom(async (value) => {
 module.exports = {
   registerValidation: [email, password, emailExists],
 };
-
-// $1 -> the first item of the array
