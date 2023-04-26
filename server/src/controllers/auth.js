@@ -6,6 +6,10 @@ const { SECRET } = require("../constants");
 exports.getUsers = async (req, res) => {
   try {
     const { rows } = await db.query("select user_id, email from users");
+    return res.status(200).json({
+      success: true,
+      users: rows,
+    });
   } catch (error) {
     console.log(error.message);
   }
@@ -49,5 +53,15 @@ exports.login = async (req, res) => {
     return res.status(500).json({
       error: error.message,
     });
+  }
+};
+
+exports.protected = async (req, res) => {
+  try {
+    return res.status(200).json({
+      info: "protected info",
+    });
+  } catch (error) {
+    console.log(error.message);
   }
 };
