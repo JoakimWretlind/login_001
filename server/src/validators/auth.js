@@ -13,9 +13,10 @@ const email = check("email")
 
 // check if email exists - every user must have a unique email
 const emailExists = check("email").custom(async (value) => {
-  const { rows } = await db.query("SELECT * FROM users WHERE email = $1", [
+  const { rows } = await db.query("SELECT * from users WHERE email = $1", [
     value,
   ]);
+
   if (rows.length) {
     throw new Error("Email already exists.");
   }

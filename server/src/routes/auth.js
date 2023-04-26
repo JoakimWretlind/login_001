@@ -7,7 +7,6 @@ const {
 const { registerValidation } = require("../validators/auth");
 const router = Router();
 
-// getUser is a function from controllers/auth
 router.get("/get-users", getUsers); // from controllers/auth
 router.post("/register", registerValidation, validationMiddleware, register); // from validators/auth & controllers/auth
 
